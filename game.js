@@ -25,13 +25,14 @@ class Game{
                 }
                 form = new Form()
                 form.display();
-            }
+            
     player1 = createSprite(200,500);
     player1.addImage("player1",player_img);
     
     player2 = createSprite(800,500);
     player2.addImage("player2", player_img);
     players=[player1,player2];
+}
 
         }
     
@@ -63,20 +64,13 @@ class Game{
 
                          
                      }
-                    
-                     
-                 
                  }
-                
-                
-                 
-
                 if (keyIsDown(RIGHT_ARROW) && player.index !== null) {
-                    player.distance -= 10
+                    player.distance =player.distance-10
                     player.update();
                 }
                 if (keyIsDown(LEFT_ARROW) && player.index !== null) {
-                    player.distance += 10
+                    player.distance = player.distance+10
                     player.update();
                 }
             
@@ -101,19 +95,19 @@ class Game{
                  }
                  
                   if (player.index !=null) {
-                     fruits.display="false"
+                    for(var i=0;i<fruitGroup.length;i++){
+                        if(fruitGroup.get(i).isTouching(players)){
+                            fruitGroup.get(i).destroy();
+                            player.score = player.score + 1;
+                            player.update();
                      
-                  }
-                
-
-         
-         
-        
-         
+                        }
 
     }
 
-    end(){
-       console.log("Game Ended");
+   
+    
+ 
+}
     }
 }
